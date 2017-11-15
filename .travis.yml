@@ -1,2 +1,10 @@
 language: csharp
+mono: none
+dist: trusty
+dotnet: 2.0.0
+sudo: required
+script:
+  - dotnet restore
+  - dotnet build -c Release
+  - dotnet test -c Release ./TwitterKataTests
 solution: TwitterKataSln.sln
