@@ -2,16 +2,16 @@ namespace TwitterKata
 {
     public class SocialNetworkRunner
     {
-        private readonly TwitterConsole _consoleObject;
+        private readonly TwitterConsole _console;
 
-        public SocialNetworkRunner(TwitterConsole consoleObject)
+        public SocialNetworkRunner(TwitterConsole console)
         {
-            _consoleObject = consoleObject;
+            _console = console;
         }
 
         public void Run()
         {
-            throw new System.NotImplementedException();
+            _console.Write(">");
         }
     }
 }

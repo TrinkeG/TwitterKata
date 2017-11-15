@@ -11,7 +11,7 @@ namespace TwitterKataTests
         //    > Alice
         //    I love the weather today(5 minutes ago)
         [Fact]
-        public void allow_users_to_post_to_wall()
+        public void write_a_prompt_to_the_wall_on_startup()
         {
             var console = new Mock<TwitterConsole>();
             var runner = new SocialNetworkRunner(console.Object);

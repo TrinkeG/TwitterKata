@@ -2,7 +2,7 @@ namespace TwitterKata
 {
     public class TwitterConsole
     {
-        public void Write(string s)
+        public virtual void Write(string s)
         {
             throw new System.NotImplementedException();
         }
