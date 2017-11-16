@@ -11,6 +11,9 @@ namespace TwitterKataTests
         private Mock<TwitterConsole> _console;
         private Mock<CommandParser> _commandParser;
         private SocialNetworkRunner _socialNetworkRunner;
+        private const string QuitInput = "Quit";
+        private const string AlicePostInput = "Alice -> I love the weather today";
+        private const string AliceReadInput = "Alice";
 
         [SetUp]
         public void SetUp()
@@ -23,7 +26,7 @@ namespace TwitterKataTests
         [Test]
         public void Write_a_prompt_to_the_console()
         {
-            _console.Setup(console => console.ReadLine()).Returns("Quit");
+            _console.Setup(console => console.ReadLine()).Returns(QuitInput);
 
             _socialNetworkRunner.Run();
 
@@ -34,9 +37,9 @@ namespace TwitterKataTests
         public void Read_user_lines_from_console_until_quit_typed()
         {
             _console.SetupSequence(console => console.ReadLine())
-                .Returns("Alice -> I love the weather today")
-                .Returns("Alice")
-                .Returns("Quit");
+                .Returns(AlicePostInput)
+                .Returns(AliceReadInput)
+                .Returns(QuitInput);
 
             _socialNetworkRunner.Run();
 
@@ -47,12 +50,12 @@ namespace TwitterKataTests
         public void Send_commands_to_be_parsed()
         {
             _console.SetupSequence(console => console.ReadLine())
-                .Returns("Alice -> I love the weather today")
-                .Returns("Quit");
+                .Returns(AlicePostInput)
+                .Returns(QuitInput);
 
             _socialNetworkRunner.Run();
 
-            _commandParser.Verify(commandParser => commandParser.ParseCommand("Alice -> I love the weather today"));
+            _commandParser.Verify(commandParser => commandParser.ParseCommand(AlicePostInput));
         }
     }
 }

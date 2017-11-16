@@ -11,11 +11,13 @@ namespace TwitterKataTests.Acceptance
         private SocialNetworkRunner _runner;
         private Mock<TwitterConsole> _console;
         private CommandParser _commandParser;
+        private CommandFactory _commandFactory;
 
         [SetUp]
         public void SetUp()
         {
-            _commandParser = new CommandParser();
+            _commandFactory = new CommandFactory();
+            _commandParser = new CommandParser(_commandFactory);
             _console = new Mock<TwitterConsole>();
             _runner = new SocialNetworkRunner(_console.Object,_commandParser);
         }
@@ -30,7 +32,6 @@ namespace TwitterKataTests.Acceptance
             _console.Verify(c => c.Write(">"));
         }
 
-        [Ignore("acceptance test - WIP ")]
         [Test]
         public void Allow_Users_To_Post_To_Wall()
         {
