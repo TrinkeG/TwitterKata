@@ -1,13 +1,14 @@
 ﻿using System;
 using Moq;
+using NUnit.Framework;
 using TwitterKata;
-using Xunit;
 
 namespace TwitterKataTests
 {
+    [TestFixture]
     public class SocialNetworkRunnerShould
     {
-        [Fact]
+        [Test]
         public void write_a_prompt_to_the_console()
         {
             var console =  new Mock<TwitterConsole>();
@@ -17,9 +18,8 @@ namespace TwitterKataTests
 
             console.Verify(c => c.Write(">"));
         }
-
-	[Fact]
-        public void Read_inputs_from_console()
+        
+/*        public void Read_inputs_from_console()
         {
             var console = new Mock<TwitterConsole>();
             var socialNetworkRunner = new SocialNetworkRunner(console.Object);
@@ -30,6 +30,6 @@ namespace TwitterKataTests
             socialNetworkRunner.Run();
 
             console.Verify(c => c.ReadInput());
-        }
+        }*/
     }
 }

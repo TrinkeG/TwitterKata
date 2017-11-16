@@ -1,16 +1,17 @@
 using Moq;
+using NUnit.Framework;
 using TwitterKata;
-using Xunit;
 
 namespace TwitterKataTests
 {
+    [TestFixture]
     public class TwitterKataShould
     {
         //    User can post to a wall
         //    > Alice -> I love the weather today
         //    > Alice
         //    I love the weather today(5 minutes ago)
-        [Fact]
+       
         public void write_a_prompt_to_the_wall_on_startup()
         {
             var console = new Mock<TwitterConsole>();
