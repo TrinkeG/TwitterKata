@@ -1,8 +1,9 @@
+using System;
 using Moq;
 using NUnit.Framework;
 using TwitterKata;
 
-namespace TwitterKataTests
+namespace TwitterKataTests.Acceptance
 {
     [TestFixture]
     public class TwitterKataShould
@@ -11,24 +12,27 @@ namespace TwitterKataTests
         //    > Alice -> I love the weather today
         //    > Alice
         //    I love the weather today(5 minutes ago)
-       
+        [Test]
         public void write_a_prompt_to_the_wall_on_startup()
         {
             var console = new Mock<TwitterConsole>();
+            console.Setup(c => c.ReadLine()).Returns("Quit");
             var runner = new SocialNetworkRunner(console.Object);
 
             runner.Run();
 
             console.Verify(c => c.Write(">"));
         }
-        /*[Fact]
+
+        [Test]
         public void Allow_Users_To_Post_To_Wall()
         {
             var console = new Mock<TwitterConsole>();
             var runner = new SocialNetworkRunner(console.Object);
-            console.SetupSequence(c => c.ReadInput())
+            console.SetupSequence(c => c.ReadLine())
                 .Returns("Alice -> I love the weather today")
-                .Returns("Alice");
+                .Returns("Alice")
+                .Returns("Quit");
 
             var clock = new Mock<Clock>();
             clock.SetupSequence(c => c.Now())
@@ -39,6 +43,6 @@ namespace TwitterKataTests
 
             console.Verify(c => c.WriteLine("I love the weather today(5 minutes ago)"));
             Assert.True(true);
-        }*/
+        }
     }
 }

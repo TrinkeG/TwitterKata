@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace TwitterKata
 {
     public class SocialNetworkRunner
@@ -11,7 +13,14 @@ namespace TwitterKata
 
         public void Run()
         {
-            _console.Write(">");
+            var applicationInUse=true;
+            while (applicationInUse)
+            {
+                _console.Write(">");
+                var incomingString = _console.ReadLine();
+                if (incomingString!=null && incomingString.Contains("Quit"))
+                    applicationInUse=false;
+            }
         }
     }
 }
