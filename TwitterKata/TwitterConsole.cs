@@ -6,5 +6,10 @@ namespace TwitterKata
         {
             throw new System.NotImplementedException();
         }
+
+        public virtual string ReadInput()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
