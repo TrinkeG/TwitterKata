@@ -22,7 +22,7 @@ namespace TwitterKataTests
 
             parser.ParseCommand("Bob -> Hi guys");
             
-            _commandFactory.Verify(commandFactory => commandFactory.CreateCommand(new[]{"Bob","->","Hi","guys"}));
+            _commandFactory.Verify(commandFactory => commandFactory.CreateCommand("Bob","->","Hi guys"));
         }
     }
 }

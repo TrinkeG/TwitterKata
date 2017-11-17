@@ -1,4 +1,7 @@
-﻿namespace TwitterKata
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace TwitterKata
 {
     public class CommandParser
     {
@@ -13,10 +16,20 @@
             _commandFactoryObject = commandFactoryObject;
         }
 
-        public virtual void ParseCommand(string command)
+        public virtual void ParseCommand(string commandInput)
         {
-            var tokens = command.Split(" ");
-            _commandFactoryObject.CreateCommand(tokens);
+            var tokens = commandInput.Split(" ").ToList();
+            var userName = GetFirstAndRemovefromList(tokens);
+            var command = GetFirstAndRemovefromList(tokens);
+            var argument = string.Join(' ', tokens);
+            _commandFactoryObject.CreateCommand(userName,command,argument);
+        }
+
+        private static string GetFirstAndRemovefromList(List<string> tokens)
+        {
+            var token = tokens.FirstOrDefault();
+            tokens.RemoveAt(0);
+            return token;
         }
     }
 }
