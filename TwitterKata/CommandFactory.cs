@@ -1,13 +1,13 @@
-﻿using System;
+﻿using TwitterKata.Commands;
 
 namespace TwitterKata
 {
     public class CommandFactory
     {
 
-        public virtual void CreateCommand(string v1, string v2, string v3)
+        public virtual Command CreateCommand(string userName, string command, string argument)
         {
-            throw new NotImplementedException();
+            return new PostCommand();
         }
     }
 }

@@ -22,13 +22,15 @@ namespace TwitterKata
             var userName = GetFirstAndRemovefromList(tokens);
             var command = GetFirstAndRemovefromList(tokens);
             var argument = string.Join(' ', tokens);
+
             _commandFactoryObject.CreateCommand(userName,command,argument);
         }
 
         private static string GetFirstAndRemovefromList(List<string> tokens)
         {
             var token = tokens.FirstOrDefault();
-            tokens.RemoveAt(0);
+            if(tokens.Count>0)
+                tokens.RemoveAt(0);
             return token;
         }
     }

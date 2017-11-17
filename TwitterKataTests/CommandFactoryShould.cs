@@ -1,28 +1,18 @@
-﻿using Moq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using TwitterKata;
+using TwitterKata.Commands;
 
 namespace TwitterKataTests
 {
     [TestFixture]
-    public class CommandParserShould
+    public class CommandFactoryShould
     {
-        private Mock<CommandFactory> _commandFactory;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _commandFactory = new Mock<CommandFactory>();
-        }
-
         [Test]
-        public void Pass_tokens_to_factory_when_user_makes_a_post()
+        public void Create_a_post_command()
         {
-            var parser = new CommandParser(_commandFactory.Object);
+            var commandFactory=new CommandFactory();
 
-            parser.ParseCommand("Bob -> Hi guys");
-            
-            _commandFactory.Verify(commandFactory => commandFactory.CreateCommand("Bob","->","Hi guys"));
+            Assert.IsInstanceOf(typeof(PostCommand),commandFactory.CreateCommand("Bob", "->", "Hi guys"));
         }
     }
 }
