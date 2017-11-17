@@ -28,7 +28,7 @@ namespace TwitterKata
 
         private static string GetFirstAndRemovefromList(List<string> tokens)
         {
-            var token = tokens.FirstOrDefault();
+            var token = tokens.FirstOrDefault()??"";
             if(tokens.Count>0)
                 tokens.RemoveAt(0);
             return token;

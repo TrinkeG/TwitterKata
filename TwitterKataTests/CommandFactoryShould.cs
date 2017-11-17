@@ -14,5 +14,12 @@ namespace TwitterKataTests
 
             Assert.IsInstanceOf(typeof(PostCommand),commandFactory.CreateCommand("Bob", "->", "Hi guys"));
         }
+
+        [Test]
+        public void Create_a_read_command()
+        {
+            var commandFactory = new CommandFactory();
+            Assert.IsInstanceOf(typeof(ReadCommand),commandFactory.CreateCommand("Bob","",""));
+        }
     }
 }

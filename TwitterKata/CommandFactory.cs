@@ -7,7 +7,9 @@ namespace TwitterKata
 
         public virtual Command CreateCommand(string userName, string command, string argument)
         {
-            return new PostCommand();
+            if(command.Equals("->"))
+                return new PostCommand();
+            return new ReadCommand();
         }
     }
 }

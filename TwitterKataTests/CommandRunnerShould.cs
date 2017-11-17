@@ -17,7 +17,7 @@ namespace TwitterKataTests
         }
 
         [Test]
-        public void Send_commands_to_be_parsed()
+        public void Send_post_input_to_be_parsed()
         {
             var commandRunner = new CommandRunner(_commandParser.Object);
 
@@ -25,5 +25,6 @@ namespace TwitterKataTests
 
             _commandParser.Verify(commandParser => commandParser.ParseCommand(AlicePostInput));
         }
+
     }
 }
