@@ -11,6 +11,7 @@ namespace TwitterKataTests.Acceptance
         private SocialNetworkRunner _runner;
         private Mock<TwitterConsole> _console;
         private CommandParser _commandParser;
+        private CommandRunner _commandRunner;
         private CommandFactory _commandFactory;
 
         [SetUp]
@@ -18,8 +19,9 @@ namespace TwitterKataTests.Acceptance
         {
             _commandFactory = new CommandFactory();
             _commandParser = new CommandParser(_commandFactory);
+            _commandRunner = new CommandRunner(_commandParser);
             _console = new Mock<TwitterConsole>();
-            _runner = new SocialNetworkRunner(_console.Object,_commandParser);
+            _runner = new SocialNetworkRunner(_console.Object,_commandRunner);
         }
 
         [Test]

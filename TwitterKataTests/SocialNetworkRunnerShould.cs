@@ -9,7 +9,7 @@ namespace TwitterKataTests
     public class SocialNetworkRunnerShould
     {
         private Mock<TwitterConsole> _console;
-        private Mock<CommandParser> _commandParser;
+        private Mock<CommandRunner> _commandRunner;
         private SocialNetworkRunner _socialNetworkRunner;
         private const string QuitInput = "Quit";
         private const string AlicePostInput = "Alice -> I love the weather today";
@@ -18,9 +18,9 @@ namespace TwitterKataTests
         [SetUp]
         public void SetUp()
         {
+            _commandRunner  = new Mock<CommandRunner>();
             _console = new Mock<TwitterConsole>();
-            _commandParser = new Mock<CommandParser>();
-            _socialNetworkRunner = new SocialNetworkRunner(_console.Object,_commandParser.Object);
+            _socialNetworkRunner = new SocialNetworkRunner(_console.Object,_commandRunner.Object);
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace TwitterKataTests
         }
 
         [Test]
-        public void Send_commands_to_be_parsed()
+        public void Send_commands_to_be_processed()
         {
             _console.SetupSequence(console => console.ReadLine())
                 .Returns(AlicePostInput)
@@ -55,7 +55,8 @@ namespace TwitterKataTests
 
             _socialNetworkRunner.Run();
 
-            _commandParser.Verify(commandParser => commandParser.ParseCommand(AlicePostInput));
+            _commandRunner.Verify(commandRunner => commandRunner.ProcessCommand(AlicePostInput));
         }
+        
     }
 }

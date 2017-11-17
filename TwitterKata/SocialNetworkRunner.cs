@@ -5,12 +5,12 @@ namespace TwitterKata
     public class SocialNetworkRunner
     {
         private readonly TwitterConsole _console;
-        private readonly CommandParser _commandParser;
+        private readonly CommandRunner _commandRunner;
 
-        public SocialNetworkRunner(TwitterConsole console, CommandParser commandParser)
+        public SocialNetworkRunner(TwitterConsole console, CommandRunner commandRunner)
         {
             _console = console;
-            _commandParser = commandParser;
+            _commandRunner = commandRunner;
         }
 
         public void Run()
@@ -23,7 +23,7 @@ namespace TwitterKata
                 if (UserWantsToQuit(userInput))
                     applicationInUse=false;
                 else
-                    _commandParser.ParseCommand(userInput);
+                    _commandRunner.ProcessCommand(userInput);
             }
         }
 
