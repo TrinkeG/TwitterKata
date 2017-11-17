@@ -1,29 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TwitterKata.Commands;
 
 namespace TwitterKata
 {
     public class CommandParser
     {
-        private readonly CommandFactory _commandFactoryObject;
+        private readonly CommandFactory _commandFactory;
 
         public CommandParser()
         {
             
         }
-        public CommandParser(CommandFactory commandFactoryObject)
+        public CommandParser(CommandFactory commandFactory)
         {
-            _commandFactoryObject = commandFactoryObject;
+            _commandFactory = commandFactory;
         }
 
-        public virtual void ParseCommand(string commandInput)
+        public virtual Command ParseCommand(string commandInput)
         {
             var tokens = commandInput.Split(" ").ToList();
             var userName = GetFirstAndRemovefromList(tokens);
             var command = GetFirstAndRemovefromList(tokens);
             var argument = string.Join(' ', tokens);
 
-            _commandFactoryObject.CreateCommand(userName,command,argument);
+            return _commandFactory.CreateCommand(userName,command,argument);
         }
 
         private static string GetFirstAndRemovefromList(List<string> tokens)

@@ -1,6 +1,4 @@
-﻿using TwitterKata.Commands;
-
-namespace TwitterKata
+﻿namespace TwitterKata.Commands
 {
     public class CommandFactory
     {

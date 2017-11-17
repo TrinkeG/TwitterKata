@@ -1,6 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
 using TwitterKata;
+using TwitterKata.Commands;
 
 namespace TwitterKataTests
 {
@@ -24,7 +25,5 @@ namespace TwitterKataTests
             
             _commandFactory.Verify(commandFactory => commandFactory.CreateCommand("Bob","->","Hi guys"));
         }
-
-
     }
 }

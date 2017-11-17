@@ -4,6 +4,7 @@ namespace TwitterKata
 {
     public class SocialNetworkRunner
     {
+        private const string Prompt = ">";
         private readonly TwitterConsole _console;
         private readonly CommandRunner _commandRunner;
 
@@ -18,7 +19,7 @@ namespace TwitterKata
             var applicationInUse=true;
             while (applicationInUse)
             {
-                _console.Write(">");
+                _console.Write(Prompt);
                 var userInput = _console.ReadLine();
                 if (UserWantsToQuit(userInput))
                     applicationInUse=false;

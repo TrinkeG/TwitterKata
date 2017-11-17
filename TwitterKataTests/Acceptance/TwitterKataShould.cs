@@ -2,6 +2,7 @@ using System;
 using Moq;
 using NUnit.Framework;
 using TwitterKata;
+using TwitterKata.Commands;
 
 namespace TwitterKataTests.Acceptance
 {
@@ -34,7 +35,7 @@ namespace TwitterKataTests.Acceptance
             _console.Verify(c => c.Write(">"));
         }
 
-        [Ignore("Acceptance-WIP")]
+        [Ignore("Acceptance - WIP")]
         [Test]
         public void Allow_Users_To_Post_To_Wall()
         {

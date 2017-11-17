@@ -15,7 +15,8 @@
 
         public virtual void ProcessCommand(string commandInput)
         {
-            _commandParser.ParseCommand(commandInput);
+           var command =  _commandParser.ParseCommand(commandInput);
+           command.Execute();
         }
     }
 }
